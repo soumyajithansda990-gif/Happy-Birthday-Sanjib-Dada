@@ -1,197 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday Dada!</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    <title>Happy Birthday Bestie 🎂</title>
 
-body {
-    min-height: 100vh;
-    overflow: hidden;
-    font-family: 'Trebuchet MS', sans-serif;
-    color: white;
-    text-align: center;
-    background: linear-gradient(135deg, #090979, #500080, #ff0080);
-    background-size: 300% 300%;
-    animation: bg 8s infinite alternate;
-}
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-@keyframes bg {
-    0% {background-position: 0% 50%;}
-    100% {background-position: 100% 50%;}
-}
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            background: linear-gradient(135deg, #ff4081, #7c4dff);
+            overflow-x: hidden;
+        }
 
-.container {
-    position: relative;
-    z-index: 2;
-    padding: 35px 15px;
-    margin-top: 5vh;
-}
+        .card {
+            width: 100%;
+            max-width: 550px;
+            margin: auto;
+            padding: 25px 18px;
+            position: relative;
+            z-index: 2;
+        }
 
-.date {
-    color: #ffe66d;
-    letter-spacing: 4px;
-    font-size: 18px;
-}
+        h1 {
+            font-size: clamp(30px, 8vw, 48px);
+            animation: bounce 1s infinite alternate;
+            text-shadow: 0 4px 12px #6a1b9a;
+        }
 
-h1 {
-    margin: 20px 0;
-    font-size: clamp(35px, 8vw, 65px);
-    color: #fff;
-    text-shadow: 0 0 10px #ff00de,
-                 0 0 25px #ff00de,
-                 0 0 45px #ff00de;
-    animation: glow 1.5s infinite alternate;
-}
+        h2 {
+            color: #fff9c4;
+        }
 
-@keyframes glow {
-    from {transform: scale(1);}
-    to {transform: scale(1.06);}
-}
+        p {
+            font-size: 18px;
+            line-height: 1.7;
+        }
 
-.subtitle {
-    font-size: 20px;
-    color: #fff5c3;
-    margin-bottom: 25px;
-}
+        .video-box {
+            margin: 25px auto;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.18);
+            border-radius: 20px;
+        }
 
-.cake {
-    font-size: 100px;
-    animation: bounce 1.5s infinite;
-}
+        video {
+            width: 100%;
+            max-height: 350px;
+            border-radius: 14px;
+            background: #222;
+        }
 
-@keyframes bounce {
-    0%, 100% {transform: translateY(0);}
-    50% {transform: translateY(-18px);}
-}
+        button {
+            padding: 14px 22px;
+            margin: 8px 4px;
+            border: none;
+            border-radius: 25px;
+            background: white;
+            color: #e91e63;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
 
-button {
-    padding: 14px 28px;
-    margin: 12px;
-    border: none;
-    border-radius: 30px;
-    background: linear-gradient(45deg, #ffcc00, #ff5e62);
-    color: #321044;
-    font-size: 17px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 0 20px #ffcc00;
-    transition: 0.3s;
-}
+        button:hover {
+            transform: scale(1.05);
+        }
 
-button:hover {
-    transform: scale(1.1);
-}
+        .heart {
+            position: fixed;
+            bottom: -40px;
+            z-index: 1;
+            pointer-events: none;
+            animation: float 6s linear forwards;
+        }
 
-#message {
-    display: none;
-    max-width: 500px;
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #ffffff80;
-    border-radius: 20px;
-    background: #ffffff20;
-    backdrop-filter: blur(8px);
-    font-size: 20px;
-    line-height: 1.6;
-    animation: appear 1s;
-}
+        @keyframes bounce {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(-10px);
+            }
+        }
 
-@keyframes appear {
-    from {opacity: 0; transform: translateY(30px);}
-    to {opacity: 1; transform: translateY(0);}
-}
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
 
-.balloon {
-    position: absolute;
-    bottom: -120px;
-    font-size: 45px;
-    animation: fly 9s linear infinite;
-    z-index: 1;
-}
-
-@keyframes fly {
-    to {transform: translateY(-120vh) rotate(20deg);}
-}
-
-.confetti {
-    position: absolute;
-    top: -20px;
-    width: 9px;
-    height: 14px;
-    animation: fall 4s linear infinite;
-}
-
-@keyframes fall {
-    to {transform: translateY(110vh) rotate(720deg);}
-}
-
-footer {
-    margin-top: 25px;
-    color: #ffe6f7;
-    font-size: 14px;
-}
-</style>
+        .footer {
+            margin-top: 25px;
+            font-size: 14px;
+        }
+    </style>
 </head>
 
 <body>
 
-<div class="container">
+    <div class="card">
 
-    <div class="date">🎉 12 NOVEMBER 🎉</div>
+        <h1>🎂 Happy Birthday! 🎉</h1>
 
-    <h1>HAPPY BIRTHDAY<br>DADA! ❤️</h1>
+        <h2>Hey Bestie! ❤️</h2>
 
-    <p class="subtitle">
-        Today is your special day! ✨
-    </p>
+        <p>
+            এতগুলো পেজ পার করে অবশেষে এখানে এলি! 😂
+            <br>
+            তোর জন্য রইল অনেক ভালোবাসা,
+            Happiness, Success আর Unlimited বিরিয়ানি! 🍗🤣
+        </p>
 
-    <div class="cake">🎂</div>
+        <div class="video-box">
 
-    <h2>May Your Life Be Full Of Happiness!</h2>
+            <h2>🎬 A Special Video For You!</h2>
 
-    <button onclick="showWish()">
-        🎁 Open Your Surprise
-    </button>
+            <video controls playsinline preload="metadata">
+                <source src="birthday.mp4" type="video/mp4">
+                Your browser does not support video.
+            </video>
 
-    <div id="message">
-        🎉 Happy Birthday, Dada! 🎉<br>
-        May your every dream come true.<br>
-        Keep smiling, keep shining and enjoy your special day! ❤️<br>
-        You deserve all the happiness in the world! 🥳
+            <p>
+                🎁 তোর জন্য ছোট্ট একটা Surprise!
+            </p>
+
+        </div>
+
+        <h2>Stay Crazy, Stay Happy! 🥳</h2>
+
+        <p>
+            বন্ধু হিসেবে তুই সত্যিই Special! ❤️
+            <br>
+            তোর সব স্বপ্ন পূরণ হোক।
+            <br>
+            Keep Smiling, Birthday Star! 🌟
+        </p>
+
+        <button onclick="celebrate()">
+            🎉 More Celebration!
+        </button>
+
+        <button onclick="location.href='index.html'">
+            🔁 Start Again
+        </button>
+
+        <p id="message"></p>
+
+        <div class="footer">
+            Made with ❤️ for my Bestie
+        </div>
+
     </div>
 
-    <footer>
-        Made with ❤️ Just for You
-    </footer>
+    <script>
 
-</div>
+// Birthday Music
+const birthdayMusic = new Audio("birthday.mp3");
+birthdayMusic.loop = true;
+birthdayMusic.volume = 0.8;
 
-<script>
+let musicStarted = false;
+
 function showWish() {
+
     document.getElementById("message").style.display = "block";
+
     launchConfetti();
 
-    const btn = document.querySelector("button");
-    btn.innerText = "🎉 Surprise Unlocked!";
+    // Play music
+    if (!musicStarted) {
+        birthdayMusic.play()
+        .then(() => {
+            musicStarted = true;
+            document.querySelector("button").innerText =
+            "🎵 Music Playing!";
+        })
+        .catch(error => {
+            alert("Music চালু হচ্ছে না! birthday.mp3 ফাইলের নাম পরীক্ষা করো।");
+        });
+    }
+
+    if (musicStarted) {
+        document.querySelector("button").innerText =
+        "🎵 Music Playing!";
+    }
 }
 
 function launchConfetti() {
+
     for (let i = 0; i < 100; i++) {
+
         let confetti = document.createElement("div");
+
         confetti.className = "confetti";
 
         confetti.style.left = Math.random() * 100 + "vw";
+
         confetti.style.backgroundColor =
-            ["#ff0", "#ff0080", "#00ffff", "#fff", "#00ff66"]
-            [Math.floor(Math.random() * 5)];
+        ["#ff0", "#ff0080", "#00ffff", "#fff", "#00ff66"]
+        [Math.floor(Math.random() * 5)];
 
         confetti.style.animationDelay = Math.random() * 3 + "s";
 
@@ -205,17 +227,21 @@ function launchConfetti() {
 const balloons = ["🎈", "🎈", "🎈", "🎊", "🎈", "🎉"];
 
 balloons.forEach((emoji, i) => {
+
     let balloon = document.createElement("div");
+
     balloon.className = "balloon";
+
     balloon.innerText = emoji;
+
     balloon.style.left = (i * 17) + "%";
+
     balloon.style.animationDelay = (i * 1.2) + "s";
+
     document.body.appendChild(balloon);
 });
 
 // Initial confetti
 launchConfetti();
-</script>
 
-</body>
-</html>
+    </script>
