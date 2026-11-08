@@ -1,247 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Surprise 🎂</title>
 
-    <title>Happy Birthday Bestie 🎂</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+body {
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Trebuchet MS', sans-serif;
+    background: linear-gradient(135deg, #16002e, #3b0875, #071b50);
+    color: white;
+    text-align: center;
+}
 
-        body {
-            margin: 0;
-            min-height: 100vh;
-            font-family: Arial, sans-serif;
-            color: white;
-            text-align: center;
-            background: linear-gradient(135deg, #ff4081, #7c4dff);
-            overflow-x: hidden;
-        }
+.container {
+    padding: 25px;
+    z-index: 2;
+}
 
-        .card {
-            width: 100%;
-            max-width: 550px;
-            margin: auto;
-            padding: 25px 18px;
-            position: relative;
-            z-index: 2;
-        }
+.date {
+    color: #ffd86b;
+    letter-spacing: 4px;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
 
-        h1 {
-            font-size: clamp(30px, 8vw, 48px);
-            animation: bounce 1s infinite alternate;
-            text-shadow: 0 4px 12px #6a1b9a;
-        }
+h1 {
+    font-size: clamp(32px, 8vw, 55px);
+    margin-bottom: 15px;
+    text-shadow: 0 0 20px #ff70e8;
+    animation: glow 2s infinite alternate;
+}
 
-        h2 {
-            color: #fff9c4;
-        }
+@keyframes glow {
+    from { text-shadow: 0 0 10px #ff70e8; }
+    to { text-shadow: 0 0 30px #ffb4f4, 0 0 50px #ff70e8; }
+}
 
-        p {
-            font-size: 18px;
-            line-height: 1.7;
-        }
+.subtitle {
+    color: #ddd0ff;
+    margin-bottom: 35px;
+}
 
-        .video-box {
-            margin: 25px auto;
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.18);
-            border-radius: 20px;
-        }
+button {
+    padding: 17px 35px;
+    border: 2px solid white;
+    border-radius: 50px;
+    background: linear-gradient(45deg, #ff3cac, #784ba0);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 25px #ff3cac;
+    transition: 0.3s;
+}
 
-        video {
-            width: 100%;
-            max-height: 350px;
-            border-radius: 14px;
-            background: #222;
-        }
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 40px #ff3cac;
+}
 
-        button {
-            padding: 14px 22px;
-            margin: 8px 4px;
-            border: none;
-            border-radius: 25px;
-            background: white;
-            color: #e91e63;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        }
+#surprise {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 0, 30, 0.88);
+    z-index: 10;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
 
-        button:hover {
-            transform: scale(1.05);
-        }
+.popup {
+    background: linear-gradient(145deg, #4b126d, #17104c);
+    border: 2px solid #ffb4f4;
+    border-radius: 25px;
+    padding: 35px 22px;
+    max-width: 420px;
+    width: 100%;
+    box-shadow: 0 0 40px #ff3cac;
+    animation: pop 0.6s ease;
+}
 
-        .heart {
-            position: fixed;
-            bottom: -40px;
-            z-index: 1;
-            pointer-events: none;
-            animation: float 6s linear forwards;
-        }
+@keyframes pop {
+    from { transform: scale(0.3) rotate(-10deg); opacity: 0; }
+    to { transform: scale(1) rotate(0); opacity: 1; }
+}
 
-        @keyframes bounce {
-            from {
-                transform: translateY(0);
-            }
-            to {
-                transform: translateY(-10px);
-            }
-        }
+.popup h2 {
+    color: #ffd86b;
+    font-size: 30px;
+    margin-bottom: 18px;
+}
 
-        @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-110vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
+.popup p {
+    line-height: 1.8;
+    color: #f4eaff;
+    margin-bottom: 20px;
+}
 
-        .footer {
-            margin-top: 25px;
-            font-size: 14px;
-        }
-    </style>
+.balloons {
+    position: fixed;
+    bottom: -100px;
+    font-size: 40px;
+    animation: fly 8s linear infinite;
+    z-index: 1;
+}
+
+@keyframes fly {
+    to { transform: translateY(-120vh) rotate(25deg); }
+}
+
+.confetti {
+    position: fixed;
+    top: -20px;
+    width: 10px;
+    height: 15px;
+    animation: fall 4s linear forwards;
+    z-index: 20;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <div class="card">
+<div class="container">
+    <div class="date">✨ 12 NOVEMBER ✨</div>
 
-        <h1>🎂 Happy Birthday! 🎉</h1>
+    <h1>Hey Dada! 🎂</h1>
 
-        <h2>Hey Bestie! ❤️</h2>
+    <p class="subtitle">
+        Someone special has a surprise waiting for you...
+    </p>
 
-        <p>
-            এতগুলো পেজ পার করে অবশেষে এখানে এলি! 😂
-            <br>
-            তোর জন্য রইল অনেক ভালোবাসা,
-            Happiness, Success আর Unlimited বিরিয়ানি! 🍗🤣
-        </p>
+    <button onclick="unlockSurprise()">
+        🔐 SURPRISE UNLOCK
+    </button>
+</div>
 
-        <div class="video-box">
-
-            <h2>🎬 A Special Video For You!</h2>
-
-            <video controls playsinline preload="metadata">
-                <source src="birthday.mp4" type="video/mp4">
-                Your browser does not support video.
-            </video>
-
-            <p>
-                🎁 তোর জন্য ছোট্ট একটা Surprise!
-            </p>
-
-        </div>
-
-        <h2>Stay Crazy, Stay Happy! 🥳</h2>
+<div id="surprise">
+    <div class="popup">
+        <h2>🎉 HAPPY BIRTHDAY DADA! 🎉</h2>
 
         <p>
-            বন্ধু হিসেবে তুই সত্যিই Special! ❤️
-            <br>
-            তোর সব স্বপ্ন পূরণ হোক।
-            <br>
-            Keep Smiling, Birthday Star! 🌟
+            Wishing you a day full of happiness, laughter
+            and unforgettable memories! ❤️<br><br>
+
+            May all your dreams come true.
+            Keep smiling and keep shining! ✨<br><br>
+
+            You deserve all the happiness in the world! 🥳
         </p>
 
-        <button onclick="celebrate()">
-            🎉 More Celebration!
-        </button>
+        <h2>🎂 Many Many Happy Returns!</h2>
 
-        <button onclick="location.href='index.html'">
-            🔁 Start Again
-        </button>
-
-        <p id="message"></p>
-
-        <div class="footer">
-            Made with ❤️ for my Bestie
-        </div>
-
+        <button onclick="closeSurprise()">Thank You ❤️</button>
     </div>
+</div>
 
-    <script>
+<!-- Music file: birthday.mp3 -->
+<audio id="birthdayMusic" loop>
+    <source src="birthday.mp3" type="audio/mpeg">
+</audio>
 
-// Birthday Music
-const birthdayMusic = new Audio("birthday.mp3");
-birthdayMusic.loop = true;
-birthdayMusic.volume = 0.8;
+<script>
+function unlockSurprise() {
+    document.getElementById("surprise").style.display = "flex";
 
-let musicStarted = false;
+    const music = document.getElementById("birthdayMusic");
+    music.play().catch(() => {
+        alert("Please tap the page once more to play music.");
+    });
 
-function showWish() {
-
-    document.getElementById("message").style.display = "block";
-
-    launchConfetti();
-
-    // Play music
-    if (!musicStarted) {
-        birthdayMusic.play()
-        .then(() => {
-            musicStarted = true;
-            document.querySelector("button").innerText =
-            "🎵 Music Playing!";
-        })
-        .catch(error => {
-            alert("Music চালু হচ্ছে না! birthday.mp3 ফাইলের নাম পরীক্ষা করো।");
-        });
-    }
-
-    if (musicStarted) {
-        document.querySelector("button").innerText =
-        "🎵 Music Playing!";
-    }
+    createConfetti();
 }
 
-function launchConfetti() {
+function closeSurprise() {
+    document.getElementById("surprise").style.display = "none";
+}
 
+function createConfetti() {
     for (let i = 0; i < 100; i++) {
-
-        let confetti = document.createElement("div");
-
+        const confetti = document.createElement("div");
         confetti.className = "confetti";
 
         confetti.style.left = Math.random() * 100 + "vw";
-
         confetti.style.backgroundColor =
-        ["#ff0", "#ff0080", "#00ffff", "#fff", "#00ff66"]
-        [Math.floor(Math.random() * 5)];
+            ["#ff3cac", "#ffd86b", "#00e5ff", "#ffffff", "#9cff57"]
+            [Math.floor(Math.random() * 5)];
 
-        confetti.style.animationDelay = Math.random() * 3 + "s";
+        confetti.style.animationDelay = Math.random() * 2 + "s";
 
         document.body.appendChild(confetti);
 
-        setTimeout(() => confetti.remove(), 5000);
+        setTimeout(() => confetti.remove(), 6000);
     }
 }
 
 // Floating balloons
-const balloons = ["🎈", "🎈", "🎈", "🎊", "🎈", "🎉"];
-
-balloons.forEach((emoji, i) => {
-
-    let balloon = document.createElement("div");
-
-    balloon.className = "balloon";
-
-    balloon.innerText = emoji;
-
-    balloon.style.left = (i * 17) + "%";
-
-    balloon.style.animationDelay = (i * 1.2) + "s";
+setInterval(() => {
+    const balloon = document.createElement("div");
+    balloon.className = "balloons";
+    balloon.innerHTML = ["🎈", "🎉", "🎊", "🎂"][Math.floor(Math.random() * 4)];
+    balloon.style.left = Math.random() * 95 + "vw";
+    balloon.style.animationDuration = (6 + Math.random() * 5) + "s";
 
     document.body.appendChild(balloon);
-});
 
-// Initial confetti
-launchConfetti();
+    setTimeout(() => balloon.remove(), 11000);
+}, 900);
+</script>
 
-    </script>
+</body>
+</html>
